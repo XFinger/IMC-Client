@@ -1,8 +1,18 @@
-<h1>
-  Welcome to our Angular 6 Application
-</h1>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda repudiandae repellat perferendis corrupti, harum provident
-  ipsam illo laudantium magni deleniti corporis modi error aperiam iure molestiae eligendi quo voluptatem minus?
-</p>
-
+ 
+  <h1>User Info</h1>
+        <a (click)="Logout()">Logout</a>
+      
+ 
+ <div class="row" *ngIf="userinfo">
+  <div class="col s12 m7">
+    
+    <div class="card">
+      <div class="card-content">
+        <span>Username :{{userinfo.username}}</span>
+        <br>
+        <span>Email : {{userinfo.email}}</span>
+        <br>
+      </div>
+    </div>
+  </div>
+</div> 
