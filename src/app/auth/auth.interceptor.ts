@@ -1,4 +1,6 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpUserEvent, HttpEvent } from "@angular/common/http";
+import { HttpHeaders } from '@angular/common/http';
+
 import { Observable } from "rxjs/Observable";
 import { UserService } from "../shared/user.service";
 import 'rxjs/add/operator/do';
@@ -14,9 +16,16 @@ export class AuthInterceptor implements HttpInterceptor {
         if (req.headers.get('No-Auth') == "True")
             return next.handle(req.clone());
  
-        if (localStorage.getItem('userToken') != null) {
+        if (localStorage.getItem('access-token') != null) {
             const clonedreq = req.clone({
-                headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
+                headers: req.headers.set(
+                     "custom", "split ")
+                    .set('uid', localStorage.getItem('uid'))
+                    .set('expiry', localStorage.getItem('expiry'))
+                    .set('client', localStorage.getItem('client'))
+                    .set('access_token', localStorage.getItem('access-token'))
+                    
+                     
                 
             });
             console.log(clonedreq + 'cloned request headers' );

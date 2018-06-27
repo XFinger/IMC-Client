@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserModel } from '../../shared/user.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,14 +11,23 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   isLoginError : boolean = false;
-  constructor(private userService : UserService,private router : Router) { }
+  userModel: UserModel;
+
+ 
+  constructor(private userService : UserService, private router : Router) { }
 
   ngOnInit() {
   }
 
   OnSubmit(email,password){
-     this.userService.userAuthentication(email,password).subscribe((data : any)=>{
-      localStorage.setItem('userToken',data.access_token);
+     this.userService.userAuthentication(email,password).subscribe((data: any) =>{  
+
+       localStorage.setItem('current_user', data.body.data.id);
+       localStorage.setItem('access-token', data.headers.get('access-token'));
+       localStorage.setItem('client', data.headers.get('client'));
+       localStorage.setItem('expiry', data.headers.get('expiry')); 
+       localStorage.setItem('uid', data.headers.get('uid'));
+      
       this.router.navigate(['/home']);
     },
     (err : HttpErrorResponse)=>{
@@ -25,4 +35,7 @@ export class SignInComponent implements OnInit {
     });
   }
 
+ 
 }
+
+ 

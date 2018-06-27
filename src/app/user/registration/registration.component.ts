@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/user.model';
+import { UserModel } from '../../shared/user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../shared/user.service';
 import { ToastrService } from 'ngx-toastr'
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr'
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  user: User;
+  userModel: UserModel;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = {
+    this.userModel = {
       username: '',
       password: '',
       email: '' 

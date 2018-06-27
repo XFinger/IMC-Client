@@ -1,18 +1,39 @@
  
-  <h1>User Info</h1>
+  <h2>User Info</h2>
         <a (click)="Logout()">Logout</a>
-      
+  <div>{{userModel | json}}</div>    
  
- <div class="row" *ngIf="userinfo">
+<div class="row" *ngIf="userModel">
   <div class="col s12 m7">
     
     <div class="card">
       <div class="card-content">
-        <span>Username :{{userinfo.username}}</span>
+        <span>List id :{{userModel.id}}</span>
         <br>
-        <span>Email : {{userinfo.email}}</span>
+        <span>User id :{{userModel.user_id}}</span>
         <br>
+        <span>Email : {{userModel.email}}</span>
+        <br>
+          <button (click)="clear(); showUserResponse()">Response Headers</button>
       </div>
+       <div *ngIf="headers">
+          Response headers:
+          <ul>
+            <li *ngFor="let header of headers">{{header}}</li> 
+          </ul>
+        </div>
+         
+ <div *ngIf ="userModel">
+   <ul>
+      <li>{{userModel.id}}</li>
+      <li>{{userModel.username}}</li>
+      <li>{{userModel.email}}</li>
+   </ul>
+       
+       
+
+ </div>
+         
     </div>
   </div>
-</div> 
+</div>
