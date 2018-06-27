@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
 
   OnSubmit(email,password){
      this.userService.userAuthentication(email,password).subscribe((data: any) =>{  
-
+       console.log('this is the body result of logging in ----' + data.body.data)
        localStorage.setItem('current_user', data.body.data.id);
        localStorage.setItem('access-token', data.headers.get('access-token'));
        localStorage.setItem('client', data.headers.get('client'));

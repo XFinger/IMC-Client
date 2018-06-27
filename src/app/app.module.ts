@@ -19,6 +19,8 @@ import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { ListitemComponent } from './listitem/listitem.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HomeComponent,
     RegistrationComponent,
     UserComponent,
-    SignInComponent
+    SignInComponent,
+    WishlistComponent,
+    ListitemComponent
 
   ],
   imports: [
