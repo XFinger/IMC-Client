@@ -1,0 +1,21 @@
+
+<mat-nav-list>
+  got here
+  <div *ngIf="friends">
+    and here
+    <span *ngFor="let fr of friends">
+      <a mat-list-item [routerLink]="['/friendlist', fr.id]" >           <!-- router link makes row clickable   toggle close here ? toggle(),  (click)="sidenav.close()-->
+        <img matListAvatar src="{{ fr.avatar.thumb.url | fixUrlPipe }} ">
+        <h3 matLine  *ngIf = "fr.username">{{ fr.username }}</h3>
+        <h3 matLine  *ngIf = "!fr.username"> Username: Unknown </h3>
+        <p  matLine>
+          User Id:{{fr.id}}
+        </p>
+      </a>
+      <mat-divider ></mat-divider>
+    </span>
+  </div>
+</mat-nav-list> 
+
+   
+  

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared/user.service';
+import { UserService } from '../../user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserModel } from '../../shared/user.model';
+import { UserModel } from '../../model/user.model';
+import {MatDialog, MatDialogConfig} from "@angular/material";
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +15,17 @@ export class SignInComponent implements OnInit {
   userModel: UserModel;
 
  
-  constructor(private userService : UserService, private router : Router) { }
+  constructor(private userService : UserService, private router : Router, private dialog: MatDialog) { }
+
+  openDialog() {
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        this.dialog.open(SignInComponent, dialogConfig);
+    }
 
   ngOnInit() {
   }
@@ -29,9 +40,9 @@ export class SignInComponent implements OnInit {
        localStorage.setItem('uid', data.headers.get('uid'));
       
       this.router.navigate(['/home']);
-    },
-    (err : HttpErrorResponse)=>{
-      this.isLoginError = true;
+      },
+        (err : HttpErrorResponse)=>{
+        this.isLoginError = true;
     });
   }
 

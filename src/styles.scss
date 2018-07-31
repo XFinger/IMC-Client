@@ -115,6 +115,7 @@ div.error-message i{
  * Make the Component injected by Router Outlet full height:
  */
 main {
+  margin:5px;
   display: flex;
   flex-direction: column;
   > *:not(router-outlet) {

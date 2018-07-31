@@ -1,0 +1,40 @@
+
+{{friendlist | json}}
+<mat-list>
+<div *ngIf="friendlist; else loading">
+  <mat-list-item>
+    <ul>
+      
+      <img matListAvatar src="{{friendlist.user.avatar.thumb.url | fixUrlPipe}} "> 
+      <li matLine>List ID: {{friendlist.id}}</li>
+      <li matLine>Type: {{friendlist.type}}</li>
+      <li matLine>User ID: {{friendlist.user_id}}</li>
+      <li matLine>User Email: {{ friendlist.user.email}}</li>
+      <li matLine>User Avatar: {{ friendlist.user.avatar_url | fixUrlPipe }}</li>
+    </ul>      
+   </mat-list-item>
+</div> 
+</mat-list>
+<!--========================================================
+ <app-listitem></app-listitem>
+========================================================-->
+<h4>Listitems</h4>
+ 
+<div *ngIf="friendlist">
+  <mat-list>
+  <div *ngFor="let li of friendlist.listitems">
+    <mat-list-item>
+      
+      <ul>
+        <li matLine>listable id: {{ li.listable_id }}</li> 
+        <li matLine>listitem id: {{ li.id }}</li>
+        <li matLine>item: {{ li.item }}</li>
+        <li matLine>status: {{ li.status.li_state }}</li>
+      </ul>
+      <mat-divider ></mat-divider>
+      
+    </mat-list-item>
+  </div>
+  </mat-list>
+</div> 
+<ng-template #loading>Loading User Data...</ng-template>

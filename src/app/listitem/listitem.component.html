@@ -1,3 +1,18 @@
-<p>
-  listitem works!
-</p>
+<h5>Listitems * Listitem Component</h5>
+<div *ngIf="listitem">
+  <mat-list>
+  <div *ngFor="let li of listitem">
+    <mat-list-item>
+      
+      <ul>
+        <li matLine>listable id: {{li.listable_id}} </li> 
+        <li matLine>listitem id: {{ li.id }}</li>
+        <li matLine>item: {{ li.item }}</li>
+        <li matLine>status: {{ li.status.li_state }}</li>
+      </ul>
+      <mat-divider ></mat-divider>
+      
+    </mat-list-item>
+  </div>
+  </mat-list>
+</div> 

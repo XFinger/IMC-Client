@@ -1,40 +1,57 @@
 <mat-sidenav-container class="all-wrap" fullscreen>
   <mat-sidenav #sidenav>
-    <mat-list>
-      <mat-list-item [routerLink]="['/']"> Foo</mat-list-item>
-      <mat-list-item [routerLink]="['/bar']"> Bar and the rest </mat-list-item>
-    </mat-list>
+    
+ 
+      <!--<mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
+      <mat-list-item *ngIf='!loggedIn'>I am Not logged in </mat-list-item>
+      <mat-list-item>{{loggedIn}} </mat-list-item>-->
+      
+    
+    
+    <!--ToDo must be logged in to engage this observable -->
+    <div *ngIf='loggedIn'>
+      <mat-list> 
+        <mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
+        <mat-list-item *ngIf='!loggedIn'>I am Not logged in </mat-list-item>
+        <mat-list-item>{{loggedIn}} </mat-list-item>
+        <app-friend></app-friend>
+      </mat-list>
+    </div>
+
   </mat-sidenav>
  
   <div class="page-wrap">
     <header role="banner">
       <mat-toolbar color="primary">
-        <button
-          type="button"
-          mat-icon-button
-          (click)="sidenav.open()"
-          title="Open sidenav">
-          <mat-icon>menu</mat-icon>
-        </button>
-        IMCLAUS
-        <span class="fill-space"></span>
+        <span *ngIf='loggedIn'>
+          <button
+            type="button"
+            mat-icon-button
+            (click)="sidenav.open()"
+            title="Open sidenav">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </span>  
+       <a [routerLink]="['/home']">  IMCLAUS </a>
+       
+        
 
-   
-
-      <ul class="right hide-on-med-and-down">
-
-        <li> <a>nav</a></li>
-        <li> <a>here</a></li>
-      </ul>
+ 
+<span class="fill-space"></span> 
+<span *ngIf='!loggedIn'><mat-icon> fingerprint </mat-icon></span>
+<span *ngIf='!loggedIn'>arrow_right_a</span>
+<span *ngIf='loggedIn'><mat-icon>account_circle</mat-icon></span>
+<span *ngIf='loggedIn'><mat-icon>logout</mat-icon></span>
+ 
+       
 
       </mat-toolbar>
     </header>
     <main class="content">
-      <router-outlet></router-outlet>
+      <router-outlet></router-outlet> 
     </main>
     <footer>
       Your sticky footer with a variable height.
     </footer>
-  </div>
-</mat-sidenav-container>
+  
 

@@ -1,3 +1,40 @@
-<p>
-  wishlist works!
-</p>
+
+
+<mat-list>
+<div *ngIf="wishlist">
+  <mat-list-item>
+    <ul>
+      
+      <img matListAvatar src="{{wishlist.user.avatar.thumb.url | fixUrlPipe}} "> 
+      <li matLine>List ID: {{wishlist.id}}</li>
+      <li matLine>Type: {{wishlist.type}}</li>
+      <li matLine>User ID: {{wishlist.user_id}}</li>
+      <li matLine>User Email: {{ wishlist.user.email}}</li>
+      <li matLine>User Avatar: {{ wishlist.user.avatar_url | fixUrlPipe }}</li>
+    </ul>      
+   </mat-list-item>
+</div> 
+</mat-list>
+========================================================
+ <app-listitem></app-listitem>
+========================================================
+<h4>Listitems</h4>
+ 
+<div *ngIf="wishlist">
+  <mat-list>
+  <div *ngFor="let li of wishlist.listitems">
+    <mat-list-item>
+      
+      <ul>
+        <li matLine>listable id: {{ li.listable_id }}</li> 
+        <li matLine>listitem id: {{ li.id }}</li>
+        <li matLine>item: {{ li.item }}</li>
+        <li matLine>status: {{ li.status.li_state }}</li>
+      </ul>
+      <mat-divider ></mat-divider>
+      
+    </mat-list-item>
+  </div>
+  </mat-list>
+</div> 
+ 
