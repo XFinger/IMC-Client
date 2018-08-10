@@ -1,0 +1,27 @@
+<form [formGroup]="listitemForm" (ngSubmit)="onSubmit()">
+  <h3>List Item</h3>
+
+  <label>
+    Item:
+    <input type="text" formControlName="item" required>
+  </label>
+
+  <label>
+    Url:
+    <input type="text" formControlName="item_url">
+  </label>
+  
+  <label>
+    Description:
+    <input type="text" formControlName="more">
+  </label>
+  <button type="submit" [disabled]="!listitemForm.valid">Submit</button>
+
+<!--show the status of the form (valid/invalid)-->
+<p>
+  Form Status: {{ listitemForm.status }}
+</p>
+ 
+ </form>
+ 
+ 

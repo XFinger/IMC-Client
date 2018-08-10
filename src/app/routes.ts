@@ -17,12 +17,35 @@ import { FriendResolver } from './friend/friend.resolver';
 export const appRoutes: Routes = [
     {path: 'home', 
      component: HomeComponent,
-     canActivate:[AuthGuard] 
+     canActivate:[AuthGuard]
+    //  ,
+    //     children: [{ 
+    //     path: '',
+    //     component: NavbarComponent},
+    //     {
+    //     path: '',
+    //     component: FriendComponent,
+    //     resolve: {
+    //         friends: FriendResolver
+    //     },
+    //     outlet: "friend-list",
+    // }
+    //]
+
     },
     
-    {path: "",
+    {path: 'navbar',
     component: NavbarComponent,
+    canActivate:[AuthGuard],
     outlet: "navbar"
+    // ,
+    //     children: [{ 
+    //     path: 'friends',
+    //     outlet: "frlist",
+    //     component: FriendComponent,
+    //     resolve: {
+    //         friends: FriendResolver
+    //     }}]
     },
     {
         path: '',
@@ -53,13 +76,23 @@ export const appRoutes: Routes = [
     // children: [{ path: '', component: ListitemComponent }]
     resolve: {
         wishlist: WishlistResolver
-    }
-    },        
+    }},
+    {
+      path: 'listitem/:id',
+      component: ListitemComponent
+    },   
+    // { path: '', 
+    // component: FriendComponent,canActivate:[AuthGuard],
+    //  outlet: "frlist",
+    // resolve: {
+    //     friends: FriendResolver
+    // }},
     { path: 'friends', 
     component: FriendComponent,canActivate:[AuthGuard],
     resolve: {
         friends: FriendResolver
-    }},    
+    }},  
+
     { path: 'friendlist/:id',
     component: FriendListComponent,
     resolve: {

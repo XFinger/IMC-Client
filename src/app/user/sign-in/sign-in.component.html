@@ -1,4 +1,6 @@
 
+
+
 <div *ngIf="isLoginError" class="red-text center error-message">
     <i class="material-icons">error</i> Incorrect email or password
 </div>
@@ -7,7 +9,7 @@
     <i class="material-icons">error</i> Incorrect username or password
 </div>
 
-<form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(email.value, password.value)">
+<form #signInForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(email.value, password.value)">
 
    <div class="row">
      <div class="input-field col s12">
@@ -23,8 +25,7 @@
     </div>
     <div class="row">
         <div class="input-field col s12">
-          <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+          <button [disabled]="!signInForm.valid" class="btn-large btn-submit" type="submit">Login</button>
         </div>
       </div>
 </form>
-

@@ -1,5 +1,5 @@
-<mat-sidenav-container class="all-wrap" fullscreen>
-  <mat-sidenav #sidenav>
+<!--<mat-sidenav-container class="all-wrap" fullscreen>
+  <mat-sidenav #sidenav>-->
     
  
       <!--<mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
@@ -9,7 +9,7 @@
     
     
     <!--ToDo must be logged in to engage this observable -->
-    <div *ngIf='loggedIn'>
+    <!--<div *ngIf='loggedIn'>
       <mat-list> 
         <mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
         <mat-list-item *ngIf='!loggedIn'>I am Not logged in </mat-list-item>
@@ -54,4 +54,63 @@
       Your sticky footer with a variable height.
     </footer>
   
+-->
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <mat-toolbar color="primary">
+       
+      <span class="toolbar-filler"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
+        <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
+      </button>
+    </mat-toolbar>
+     
+      <!--<a mat-list-item class="sidenav-link" [routerLink]="['/comp1']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>account_balance</mat-icon>
+        <span class="title" mat-line>comp1</span>
+        <span mat-line class="secondary">test</span>
+      </a>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/comp2']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>android</mat-icon>
+        <span class="title" mat-line>comp2</span>
+        <span mat-line class="secondary">test</span>
+      </a>-->
 
+
+<!--<app-friend></app-friend> -->
+<div *ngIf='loggedIn'>
+   
+<!--<router-outlet name="frlist"> </router-outlet>-->
+</div>
+     
+  </mat-sidenav>
+  
+  
+  <mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
+            <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <h1 class="component-title">
+      <a class="title-link" [routerLink]="['/home']">  IMCLAUS </a>
+    </h1>
+    <span class="toolbar-filler"></span>
+    <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
+    <!--<button id="button-logout" mat-button>Log Out</button>-->
+     
+<span class="fill-space"></span> 
+  <span *ngIf='!loggedIn'>
+    <mat-icon> fingerprint </mat-icon>
+    <mat-icon> android </mat-icon>
+  </span>
+  <span *ngIf='loggedIn'>
+    <mat-icon>account_circle</mat-icon>
+    <mat-icon>fingerprint</mat-icon>
+  </span>
+
+ 
+
+
+
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

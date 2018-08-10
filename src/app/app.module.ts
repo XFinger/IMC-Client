@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule }  from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './user/user.service';
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarService } from './navbar/navbar.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './user/registration/registration.component';
@@ -30,7 +32,8 @@ import { AuthService } from './auth/auth.service';
 import { FriendListComponent } from './friend-list/friend-list.component';
 import { FriendListResolver } from './friend-list/friend-list.resolver';
 import { FriendListService } from './friend-list/friend-list.service';
-
+import { AddListitemDialogComponent } from './listitem/forms/add-listitem-dialog.component'
+import { patternValidator } from './shared/pattern-validator';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { FriendListService } from './friend-list/friend-list.service';
     FixUrlPipe,
     FriendComponent,
     FriendListComponent,
+    AddListitemDialogComponent,
+    
+    
     
 
   ],
@@ -57,6 +63,7 @@ import { FriendListService } from './friend-list/friend-list.service';
     LayoutModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
     
    ],
@@ -72,6 +79,7 @@ import { FriendListService } from './friend-list/friend-list.service';
               WishlistResolver,
               FriendService,
               FriendResolver,
+              NavbarService,
 
     {
       provide : HTTP_INTERCEPTORS,
@@ -79,6 +87,6 @@ import { FriendListService } from './friend-list/friend-list.service';
       multi : true
     }],
   bootstrap: [AppComponent],
-  entryComponents: [SignInComponent],
+  entryComponents: [SignInComponent, AddListitemDialogComponent],
 })
 export class AppModule { }

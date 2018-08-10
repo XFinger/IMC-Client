@@ -4,18 +4,25 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserModel } from '../../model/user.model';
 import {MatDialog, MatDialogConfig} from "@angular/material";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+//import { patternValidator } from '../../shared/pattern-validator';
+
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+ export class SignInComponent implements OnInit{
   isLoginError : boolean = false;
   userModel: UserModel;
 
- 
-  constructor(private userService : UserService, private router : Router, private dialog: MatDialog) { }
+
+  constructor(
+    private userService : UserService, 
+    private router : Router, 
+    private dialog: MatDialog
+  ){}
 
   openDialog() {
 
@@ -28,10 +35,15 @@ export class SignInComponent implements OnInit {
     }
 
   ngOnInit() {
+     
   }
 
-  OnSubmit(email,password){
-     this.userService.userAuthentication(email,password).subscribe((data: any) =>{  
+
+
+  OnSubmit(email, password){
+      
+    console.log("sign on Log/pass " +   email + "/" +   password)
+     this.userService.userAuthentication(email, password).subscribe((data: any) =>{  
        console.log('this is the body result of logging in ----' + data.body.data)
        localStorage.setItem('current_user', data.body.data.id);
        localStorage.setItem('access-token', data.headers.get('access-token'));
@@ -47,6 +59,6 @@ export class SignInComponent implements OnInit {
   }
 
  
-}
+ }
 
  
