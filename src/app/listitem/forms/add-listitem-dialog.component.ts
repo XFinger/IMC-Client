@@ -21,8 +21,9 @@ export class AddListitemDialogComponent implements OnInit {
       more: [''],
     })
     listable_id: number;
+    title: "Add an Item";
     
-  constructor(
+  constructor( 
     public fb: FormBuilder, 
     private listitemService: ListitemService,
     private router: Router,   
