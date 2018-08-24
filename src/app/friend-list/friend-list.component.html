@@ -1,5 +1,5 @@
 
-{{friendlist | json}}
+<!--{{friendlist | json}}-->
 <mat-list>
 <div *ngIf="friendlist; else loading">
   <mat-list-item>
@@ -15,12 +15,13 @@
    </mat-list-item>
 </div> 
 </mat-list>
-<!--========================================================
- <app-listitem></app-listitem>
-========================================================-->
-<h4>Listitems</h4>
+<h5>Listitems</h5>
+========================================================<br>
+ <app-listitem [listId]= friendlist.id></app-listitem>
+========================================================<br>
+
  
-<div *ngIf="friendlist">
+<!--<div *ngIf="friendlist">
   <mat-list>
   <div *ngFor="let li of friendlist.listitems">
     <mat-list-item>
@@ -36,5 +37,5 @@
     </mat-list-item>
   </div>
   </mat-list>
-</div> 
+</div> -->
 <ng-template #loading>Loading User Data...</ng-template>

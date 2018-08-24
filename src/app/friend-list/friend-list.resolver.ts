@@ -18,6 +18,7 @@ export class FriendListResolver implements Resolve<FriendList> {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<FriendList> {
+        console.log("got to friendlist resolver ")
         var id = route.paramMap.get('id');
         return this.service.getFriendList(id);
     }

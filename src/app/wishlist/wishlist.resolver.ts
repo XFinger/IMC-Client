@@ -19,6 +19,6 @@ export class WishlistResolver implements Resolve<List> {
         state: RouterStateSnapshot
     ): Observable<List> {
         var id = route.paramMap.get('id');
-        return this.service.getWishlist(id);
+        return this.service.getWishlist(id)
     }
 }

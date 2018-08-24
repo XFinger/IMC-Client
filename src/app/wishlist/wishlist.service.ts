@@ -16,7 +16,7 @@ export class WishlistService {
   constructor(private http: HttpClient) { }
 
 
- getWishlist(listId: string): Observable<List> {
+ public getWishlist(listId: string): Observable<List> {
      var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
      //var uid = localStorage.getItem('current_user'); 
      console.log("got to the wishlist service !");

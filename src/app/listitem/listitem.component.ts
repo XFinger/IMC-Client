@@ -4,9 +4,6 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ListitemService } from './listitem.service';
 import { Location } from '@angular/common';
 
-//import { WishlistComponent } from '../wishlist/wishlist.component'
-//import { List } from '../model/list.model';
-
 
 @Component({
   selector: 'app-listitem',
@@ -14,23 +11,39 @@ import { Location } from '@angular/common';
   styleUrls: ['./listitem.component.scss']
 })
 export class ListitemComponent implements OnInit {
-   
-  constructor(
+   constructor(
     private route: ActivatedRoute,
     private router: Router, 
     private listitemService: ListitemService,
     private location: Location,
+    
     ){} 
      
-  
-  @Input()  listitem: Listitem;
+  listitems: Listitem;
+  //@Input()  listitem: Listitem;
+  @Input() listId ;
 
   ngOnInit(): void  {
-    this.getListitem();
+    //this.getListitem();
+    this.getListitems();
+    
+    // this.route.data.subscribe(({ listitem }) => {
+    //         this.listitem = listitem;
+    //         console.log('hit listitem.component' );
+    //         console.log('bound data for friendlist_id = ' + this.listId )
+    //     });
   }
+
+getListitems(): void {
+     
+    //const id = + this.route.snapshot.paramMap.get('id');
+    this.listitemService.getListitems(this.listId)
+      .subscribe(listitems => this.listitems = listitems);
+  }
+
   getListitem(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = + this.route.snapshot.paramMap.get('id');
     this.listitemService.getListitem(id)
-      .subscribe(listitem => this.listitem = listitem);
+      .subscribe(listitems => this.listitems = listitems);
   }
 }

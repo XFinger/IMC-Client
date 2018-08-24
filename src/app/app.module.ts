@@ -24,6 +24,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { WishlistService } from './wishlist/wishlist.service';
 import { WishlistResolver } from './wishlist/wishlist.resolver';
 import { ListitemComponent } from './listitem/listitem.component';
+import { ListitemResolver } from './listitem/listitem.resolver';
+import { ListitemService } from './listitem/listitem.service';
 import { FixUrlPipe } from './pipe/fixUrl.pipe';
 import { FriendComponent } from './friend/friend.component';
 import { FriendService } from './friend/friend.service';
@@ -80,6 +82,8 @@ import { patternValidator } from './shared/pattern-validator';
               FriendService,
               FriendResolver,
               NavbarService,
+              ListitemResolver,
+              ListitemService,
 
     {
       provide : HTTP_INTERCEPTORS,

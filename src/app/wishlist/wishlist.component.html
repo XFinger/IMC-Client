@@ -1,7 +1,9 @@
 
 
-<mat-list>
+
+
 <div *ngIf="wishlist">
+  <mat-list>
   <mat-list-item>
     <ul>
       
@@ -11,36 +13,41 @@
       <li matLine>User ID: {{wishlist.user_id}}</li>
       <li matLine>User Email: {{ wishlist.user.email}}</li>
       <li matLine>User Avatar: {{ wishlist.user.avatar_url | fixUrlPipe }}
-        </li><button (click)="addListitemDialog()">Add Listitem</button>
+      </li>
+      <button (click)="addListitemDialog()">Add Listitem</button>
 
     </ul>      
    </mat-list-item>
+   </mat-list>
+========================================================<br>
+ <app-listitem [listId]= wishlist.id></app-listitem>
+========================================================<br>
+
 </div> 
-<!--</mat-list>
-========================================================
- <app-listitem></app-listitem>
-========================================================
-<h4>Listitems</h4>-->
+
  
-<div *ngIf="wishlist">
+<!--<div *ngIf="wishlist">
   <mat-list>
   <div *ngFor="let li of wishlist.listitems">
-          <a mat-list-item [routerLink]="['/listitem', li.id]">     <!-- router link makes row clickable   toggle close here ? toggle(),  (click)="sidenav.close()-->
+          <a mat-list-item [routerLink]="['/listitem', li.id]">-->
+               <!-- router link makes row clickable   toggle close here ? toggle(),  (click)="sidenav.close()-->
 
       
-      <ul>
-        <li matLine>listable id: {{ li.listable_id }}</li> 
+      <!--<ul>
+         
         <li matLine>listitem id: {{ li.id }}</li>
         <li matLine>item: {{ li.item }}</li>
+        <li matLine>item url: {{ li.item_url }}</li>
+        <li matLine>description: {{li.more}} </li> 
         <li matLine>status: {{ li.status.li_state }}</li>
-
+        
       </ul>
       
-      <mat-divider ></mat-divider>
-      
-    <!--</mat-list-item>-->
     </a>
+    <button (click)="deleteListitem(li.id)">Delete Listitem</button>
+    <mat-divider ></mat-divider>
   </div>
   </mat-list>
-</div> 
+  
+</div> -->
  

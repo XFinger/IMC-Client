@@ -29,10 +29,10 @@ export class FriendComponent implements OnInit {
     toggleNav() {
     this.sidenav.toggle();
     }
-    closeNav() {
-    this.sidenav.close();
+    // closeNav() {
+    // this.sidenav.close();
 
-  }
+  //}
 
     ngOnInit() {
         this.route.data.subscribe(({ friends }) => {

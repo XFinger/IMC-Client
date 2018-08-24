@@ -17,9 +17,9 @@ public sidenav: MatSidenav;
     }
 
 
-    public close() {
-        return this.sidenav.close();
-    }
+    // public close() {
+    //     return this.sidenav.close();
+    // }
 
     public toggle(): void {
     this.sidenav.toggle();
