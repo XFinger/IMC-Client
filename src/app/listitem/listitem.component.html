@@ -2,20 +2,20 @@
 
 <div *ngIf="listitems">
   <mat-list> 
-   <div *ngFor="let li of listitems"> 
-    <mat-list-item>
+   <mat-list-item *ngFor="let li of listitems"> 
+    
      
-      <ul>
-        <li matLine>listable id: {{li.listable_id}} </li> 
-        <li matLine>listitem id: {{ li.id }}</li>
-        <li matLine>item: {{ li.item }}</li>
-        <li matLine>url: {{li.item_url}} </li>
-        <li matLine>description: {{li.more}} </li> 
-        <li matLine>status: {{ li.status.li_state }}</li>
-      </ul>
+      
+        <h5 matLine>listable id: {{li.listable_id}} </h5> 
+        <p matLine>listitem id: {{ li.id }}
+          <span >item: {{ li.item }}</span>
+          <span  >url: {{li.item_url}} </span>
+          <span  >description: {{li.more}} </span> 
+          <span  >status: {{ li.status.li_state }}</span>
+        </p>
       <mat-divider ></mat-divider>
       
-    </mat-list-item>
-  </div>
+    
+  </mat-list-item>
   </mat-list>
 </div> 

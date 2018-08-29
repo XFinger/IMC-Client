@@ -22,7 +22,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
 body {
@@ -106,17 +106,7 @@ div.error-message i{
 .content {
   flex: 1;
 }
- 
- 
-/*
- * Make the Component injected by Router Outlet full height:
- */
-main {
-  margin:5px;
-  display: flex;
-  flex-direction: column;
-  > *:not(router-outlet) {
-    flex: 1;
-    display: block;
-  }
-}
+ input:focus:not([read-only]) {
+	border-bottom: none!important;
+	box-shadow: none!important;	
+} 

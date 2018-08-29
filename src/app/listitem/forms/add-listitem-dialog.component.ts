@@ -63,10 +63,11 @@ export class AddListitemDialogComponent implements OnInit {
         (err : HttpErrorResponse)=>{
         this.isError = true;
     });
+     
     //close the dialog and trigger afterClose on wishlist component page to refresh the page
     this.dialogRef.close(this.listitemForm.value);
     //this.cd.markForCheck();
-     
+      
 }
 
 }

@@ -25,7 +25,7 @@ export class WishlistComponent implements OnInit {
     listitems: Listitem;
     listitemDialogRef: MatDialogRef<AddListitemDialogComponent>
     wishlist: List;
-   // @Input() wishlist;
+    @Input() listitem;
  
     
 
@@ -50,6 +50,7 @@ export class WishlistComponent implements OnInit {
     //config dialog
         dialogConfig.hasBackdrop = true;
         dialogConfig.autoFocus = true;
+        dialogConfig.minWidth = 300;
 
         dialogConfig.data = {
             listable_id: this.wishlist.id
@@ -61,7 +62,7 @@ export class WishlistComponent implements OnInit {
     this.listitemDialogRef.afterClosed().subscribe(value => {
         console.log(`Dialog sent: ${value}`);
           let listitems = value;
-          this.wishlist.listitems.push();
+          //this.listitem.push();
           console.log("wislist.listitem push value: "  + this.wishlist.listitems);
     //  let newlistitems = this.listitem;
     //  newlistitems.push( new listitem(1, "LISTITEM 4", 

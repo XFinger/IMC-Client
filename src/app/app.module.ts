@@ -67,7 +67,7 @@ import { patternValidator } from './shared/pattern-validator';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    
+        
    ],
   
   

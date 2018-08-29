@@ -15,10 +15,11 @@
       <li matLine>User Avatar: {{ wishlist.user.avatar_url | fixUrlPipe }}
       </li>
       <button (click)="addListitemDialog()">Add Listitem</button>
-
     </ul>      
    </mat-list-item>
    </mat-list>
+   
+
 ========================================================<br>
  <app-listitem [listId]= wishlist.id></app-listitem>
 ========================================================<br>

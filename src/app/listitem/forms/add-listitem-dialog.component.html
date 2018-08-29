@@ -1,4 +1,50 @@
+<!--<form [formGroup]="form" (ngSubmit)="submit(form)">
+  <h1 mat-dialog-title>Add file</h1>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="filename" placeholder="Enter filename">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit">Add</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>-->
 <form [formGroup]="listitemForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Add an Item</h1>
+    <mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label> Item Name </mat-label>
+        <input matInput formControlName="item" required>
+         <mat-hint>Name of the item</mat-hint>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label> URL </mat-label>
+        <input matInput formControlName="item_url"  >
+         <mat-hint>Optional URL</mat-hint>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label> Description </mat-label>
+        <input matInput formContolName="more" >
+         <mat-hint>Optional info</mat-hint>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+    <button mat-button type="onSubmit">Add</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+  <!--show the status of the form (valid/invalid)
+  <p>
+    Form Status: {{ listitemForm.status }}
+  </p>-->
+</form>
+
+ 
+
+  
+ <!--
+  ****************** working orig
+  <form [formGroup]="listitemForm" (ngSubmit)="onSubmit()">
   <h4>Add an Item</h4>
 
   <label>
@@ -16,12 +62,12 @@
     <input type="text" formControlName="more">
   </label>
   <button type="submit" [disabled]="!listitemForm.valid">Submit</button>
-
+-->
 <!--show the status of the form (valid/invalid)-->
-<p>
+<!--<p>
   Form Status: {{ listitemForm.status }}
 </p>
  
- </form>
+ </form>-->
  
  
