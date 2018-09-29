@@ -41,7 +41,6 @@ var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
 
 //create listitem working
 createListitem(body): Observable<HttpResponse<Listitem>>{
-  console.log("body = " + body);
   var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
   const url = `${this.rootUrl}/listitems`;
   return this.http.post<Listitem>(url, body, {headers : reqHeader,  observe: 'response'});
@@ -60,11 +59,3 @@ deleteListitem(id: number): Observable<{}>{
 
 } 
 
-// public getFriends(): Observable<Friends>{ 
-//      var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
-//      var uid = localStorage.getItem('current_user');
-  
-//      return this.http.get(this.rootUrl + '/users/' + uid + '/friendships', {headers : reqHeader})
-//      .map(response => response as Friends);
-    
-//   }

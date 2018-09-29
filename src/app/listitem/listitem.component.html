@@ -8,10 +8,18 @@
       
         <h5 matLine>listable id: {{li.listable_id}} </h5> 
         <p matLine>listitem id: {{ li.id }}
-          <span >item: {{ li.item }}</span>
-          <span  >url: {{li.item_url}} </span>
-          <span  >description: {{li.more}} </span> 
-          <span  >status: {{ li.status.li_state }}</span>
+
+ <!--conditional color based on item status -->
+
+<span [style.color]="li.status.li_state === 'todo' ? 'red' : 'black' ">
+item: {{ li.item }}
+</span>
+
+          <span>   </span>
+          <span> url: {{li.item_url}} </span>
+          <span> description: {{li.more}} </span> 
+          <span> status: {{ li.status.li_state }}</span>
+          <button (click)="deleteListitem(li.id)">Delete Listitem</button>
         </p>
       <mat-divider ></mat-divider>
       

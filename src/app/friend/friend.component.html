@@ -1,10 +1,8 @@
 
 <mat-nav-list>
   <div *ngIf="friends">
-    <mat-list-item>soup goes here</mat-list-item>
-    <mat-list-item>does not go here</mat-list-item>
     <span *ngFor="let fr of friends">
-      <a mat-list-item class="sidenav" [routerLink]="['/friendlist', fr.id]">  <!-- (click)="closeNav()"          router link makes row clickable   toggle close here ? toggle(),  (click)="sidenav.close()-->
+      <a mat-list-item class="sidenav" [routerLink]="['/friendlist', fr.id]" (click)="toggleSidenav()"> <!-- (click)="sidenav.toggle();"         router link makes row clickable   toggle close here ? toggle(),  (click)="sidenav.close() -->
         <img matListAvatar src="{{ fr.avatar.thumb.url | fixUrlPipe }} ">
         <h3 matLine  *ngIf = "fr.username">{{ fr.username }}</h3>
         <h3 matLine  *ngIf = "!fr.username"> Username: Unknown </h3>

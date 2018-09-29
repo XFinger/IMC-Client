@@ -74,12 +74,6 @@ export class WishlistComponent implements OnInit {
        
     });   
     }
-    //button to delete listitem
-    deleteListitem(id){
-        this.listitemService.deleteListitem(id).subscribe();
-        this.cd.markForCheck();
-         
-        
-    }
+   
 }
 

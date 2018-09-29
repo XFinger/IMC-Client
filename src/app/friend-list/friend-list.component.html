@@ -16,9 +16,8 @@
 </div> 
 </mat-list>
 <h5>Listitems</h5>
-========================================================<br>
- <app-listitem [listId]= friendlist.id></app-listitem>
-========================================================<br>
+<!--pass listId to listitem component on @input-->
+<app-listitem [listId]= friendlist.id ></app-listitem>
 
  
 <!--<div *ngIf="friendlist">
@@ -39,3 +38,4 @@
   </mat-list>
 </div> -->
 <ng-template #loading>Loading User Data...</ng-template>
+<router-outlet></router-outlet>

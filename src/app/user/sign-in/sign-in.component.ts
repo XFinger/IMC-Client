@@ -1,60 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../../auth/auth.service';
+import { Component, OnInit, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef  } from '@angular/core';
 import { UserService } from '../../user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserModel } from '../../model/user.model';
-import {MatDialog, MatDialogConfig} from "@angular/material";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 //import { patternValidator } from '../../shared/pattern-validator';
+import 'rxjs/add/operator/map'
 
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
 })
  export class SignInComponent implements OnInit{
+  @Input() user: UserModel;
   isLoginError : boolean = false;
-  userModel: UserModel;
+  hide = true;
+ 
+  signinForm = this.fb.group ({
+    email: [''],
+    password: [''],
+    
+  })
+  // convenience getter for easy access to form fields
+    get f() { return this.signinForm.controls; }
 
-
+   
   constructor(
     private userService : UserService, 
-    private router : Router, 
-    private dialog: MatDialog
+    private router : Router,
+    public fb: FormBuilder, 
+    private authService: AuthService
   ){}
-
-  openDialog() {
-
-        const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-
-        this.dialog.open(SignInComponent, dialogConfig);
-    }
 
   ngOnInit() {
      
   }
 
-
-
-  OnSubmit(email, password){
+  OnSubmit(user){
       
-    console.log("sign on Log/pass " +   email + "/" +   password)
-     this.userService.userAuthentication(email, password).subscribe((data: any) =>{  
-       console.log('this is the body result of logging in ----' + data.body.data)
-       localStorage.setItem('current_user', data.body.data.id);
-       localStorage.setItem('access-token', data.headers.get('access-token'));
-       localStorage.setItem('client', data.headers.get('client'));
-       localStorage.setItem('expiry', data.headers.get('expiry')); 
-       localStorage.setItem('uid', data.headers.get('uid'));
-      
-      this.router.navigate(['/home']);
-      },
+    this.authService.userAuthentication(this.f.email.value, this.f.password.value).subscribe(data => { 
+    // this.authService.userEmitChange(user);
+    this.router.navigate(['/home']);
+    },
+    
         (err : HttpErrorResponse)=>{
         this.isLoginError = true;
+        this.router.navigate(['/login']);
+        console.log("failed login")
     });
   }
 

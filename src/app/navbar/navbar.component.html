@@ -1,62 +1,5 @@
-<!--<mat-sidenav-container class="all-wrap" fullscreen>
-  <mat-sidenav #sidenav>-->
-    
- 
-      <!--<mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
-      <mat-list-item *ngIf='!loggedIn'>I am Not logged in </mat-list-item>
-      <mat-list-item>{{loggedIn}} </mat-list-item>-->
-      
-    
-    
-    <!--ToDo must be logged in to engage this observable -->
-    <!--<div *ngIf='loggedIn'>
-      <mat-list> 
-        <mat-list-item *ngIf='loggedIn'> I am logged in     </mat-list-item>
-        <mat-list-item *ngIf='!loggedIn'>I am Not logged in </mat-list-item>
-        <mat-list-item>{{loggedIn}} </mat-list-item>
-        <app-friend></app-friend>
-      </mat-list>
-    </div>
-
-  </mat-sidenav>
- 
-  <div class="page-wrap">
-    <header role="banner">
-      <mat-toolbar color="primary">
-        <span *ngIf='loggedIn'>
-          <button
-            type="button"
-            mat-icon-button
-            (click)="sidenav.open()"
-            title="Open sidenav">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </span>  
-       <a [routerLink]="['/home']">  IMCLAUS </a>
-       
-        
-
- 
-<span class="fill-space"></span> 
-<span *ngIf='!loggedIn'><mat-icon> fingerprint </mat-icon></span>
-<span *ngIf='!loggedIn'>arrow_right_a</span>
-<span *ngIf='loggedIn'><mat-icon>account_circle</mat-icon></span>
-<span *ngIf='loggedIn'><mat-icon>logout</mat-icon></span>
- 
-       
-
-      </mat-toolbar>
-    </header>
-    <main class="content">
-      <router-outlet></router-outlet> 
-    </main>
-    <footer>
-      Your sticky footer with a variable height.
-    </footer>
-  
--->
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+ <mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav" >
     <mat-toolbar color="primary">
        
       <span class="toolbar-filler"></span>
@@ -65,52 +8,31 @@
       </button>
     </mat-toolbar>
      
-      <!--<a mat-list-item class="sidenav-link" [routerLink]="['/comp1']" (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon>account_balance</mat-icon>
-        <span class="title" mat-line>comp1</span>
-        <span mat-line class="secondary">test</span>
-      </a>
-      <a mat-list-item class="sidenav-link" [routerLink]="['/comp2']" (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon>android</mat-icon>
-        <span class="title" mat-line>comp2</span>
-        <span mat-line class="secondary">test</span>
-      </a>-->
 
-
-<!--<app-friend></app-friend> -->
-<div *ngIf='loggedIn'>
-   
-<!--<router-outlet name="frlist"> </router-outlet>-->
-</div>
-     
-  </mat-sidenav>
+ 
+  <div>
+    <app-friend></app-friend> 
+      
+     <router-outlet name="frlist"> </router-outlet> 
+</div>  
+    
+    </mat-sidenav>
   
   
-  <mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="primary">
+  
+ <mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="primary" role="toolbar">
     <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
             <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
     </button>
     <h1 class="component-title">
       <a class="title-link" [routerLink]="['/home']">  IMCLAUS </a>
     </h1>
-    <span class="toolbar-filler"></span>
-    <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
-    <!--<button id="button-logout" mat-button>Log Out</button>-->
-     
-<span class="fill-space"></span> 
-  <span *ngIf='!loggedIn'>
-    <mat-icon> fingerprint </mat-icon>
-    <mat-icon> android </mat-icon>
-  </span>
-  <span *ngIf='loggedIn'>
-    <mat-icon>account_circle</mat-icon>
-    <mat-icon>fingerprint</mat-icon>
-  </span>
-
- 
-
-
-
+    <span class="fill-space"></span> 
+    <button (click)="Logout()" mat-button>Log Out</button> 
+           
   </mat-toolbar>
   <router-outlet></router-outlet>
+
 </mat-sidenav-container>
+  
+   

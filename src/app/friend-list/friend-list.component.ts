@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FriendListService} from "./friend-list.service";
 import {FriendList} from "../model/friend-list.model";
 import {ActivatedRoute} from "@angular/router";
+import { NavbarService } from './../navbar/navbar.service'
+//import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-friend-list',
@@ -9,10 +11,15 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./friend-list.component.scss']
 })
 export class FriendListComponent implements OnInit {
-
+    //public sidenav: MatSidenav;
     friendlist: FriendList;
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute, 
+        //private navbarService: NavbarService, 
+
+        
+        ) { }
 
     ngOnInit() {
         this.route.data.subscribe(({ friendlist }) => {

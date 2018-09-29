@@ -6,7 +6,7 @@ import { Friends }  from '../model/friend.model';
 import { AuthService } from './../auth/auth.service';
 import { NavbarComponent } from './../navbar/navbar.component'
 import { NavbarService } from './../navbar/navbar.service'
-//import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-friend',
@@ -18,27 +18,29 @@ export class FriendComponent implements OnInit {
   // headers: string[]; 
   // user: UserModel;
   friends: Friends;
-  //private sidenav: NavbarService;
+    
   // btnClick = function (id) {    //link to wishlist
   //     var lid = id;
   //     console.log("friendlist id = "  +lid);
   //     this.router.navigate(['/wishlist/' + lid]);
   // };
 
-  constructor(private route: ActivatedRoute, private sidenav: NavbarService) { }
-    toggleNav() {
-    this.sidenav.toggle();
-    }
-    // closeNav() {
-    // this.sidenav.close();
-
-  //}
-
+  constructor(
+    private route: ActivatedRoute, 
+    private navbarService: NavbarService) { }
+    public sidenav: MatSidenav;
     ngOnInit() {
         this.route.data.subscribe(({ friends }) => {
             this.friends = friends;
         });
+        this.navbarService.setSidenav(this.sidenav); 
+
     }
+
+    public toggleSidenav(): void {
+    console.log( 'navbar   ' + this.navbarService.sidenav)
+    //this.navbarService.sidenav.toggle();
+   }
 }
 
 

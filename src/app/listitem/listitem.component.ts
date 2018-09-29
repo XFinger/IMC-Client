@@ -1,16 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, 
+         Input, 
+         OnInit, 
+         OnChanges, 
+         SimpleChanges, 
+         SimpleChange,
+         ChangeDetectionStrategy,
+         OnDestroy  } from '@angular/core';
 import { Listitem } from '../model/listitem.model';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router'; 
+import { Router, 
+         ActivatedRoute, 
+         ParamMap } from '@angular/router'; 
 import { ListitemService } from './listitem.service';
 import { Location } from '@angular/common';
-
 
 @Component({
   selector: 'app-listitem',
   templateUrl: './listitem.component.html',
   styleUrls: ['./listitem.component.scss']
 })
-export class ListitemComponent implements OnInit {
+export class ListitemComponent implements OnChanges, OnInit {
    constructor(
     private route: ActivatedRoute,
     private router: Router, 
@@ -20,19 +28,21 @@ export class ListitemComponent implements OnInit {
     ){} 
      
   listitems: Listitem;
-  //@Input()  listitem: Listitem;
   @Input() listId ;
-
-  ngOnInit(): void  {
-    //this.getListitem();
+  
+    ngOnInit(): void  {
     this.getListitems();
-    
-    // this.route.data.subscribe(({ listitem }) => {
-    //         this.listitem = listitem;
-    //         console.log('hit listitem.component' );
-    //         console.log('bound data for friendlist_id = ' + this.listId )
-    //     });
+    console.log("-----------------" + this.listId)
   }
+
+  ngOnChanges(changes: SimpleChanges): void{
+    console.log('OnChanges');
+    console.log(JSON.stringify(changes));
+    //@input changes call getListitems to update listitems
+     this.getListitems();
+
+  } 
+
 
 getListitems(): void {
      
@@ -46,4 +56,11 @@ getListitems(): void {
     this.listitemService.getListitem(id)
       .subscribe(listitems => this.listitems = listitems);
   }
+
+   //button to delete listitem
+    deleteListitem(id){
+        this.listitemService.deleteListitem(id).subscribe();
+  }
+
+  
 }

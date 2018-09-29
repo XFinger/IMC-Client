@@ -36,6 +36,8 @@ import { FriendListResolver } from './friend-list/friend-list.resolver';
 import { FriendListService } from './friend-list/friend-list.service';
 import { AddListitemDialogComponent } from './listitem/forms/add-listitem-dialog.component'
 import { patternValidator } from './shared/pattern-validator';
+import { ToolbarComponent } from './user/toolbar/toolbar.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -51,9 +53,8 @@ import { patternValidator } from './shared/pattern-validator';
     FriendComponent,
     FriendListComponent,
     AddListitemDialogComponent,
-    
-    
-    
+    ToolbarComponent,
+    MainComponent, 
 
   ],
   imports: [
@@ -70,8 +71,6 @@ import { patternValidator } from './shared/pattern-validator';
         
    ],
   
-  
-
   providers:[ UserService, 
               AuthGuard, 
               AuthService, 

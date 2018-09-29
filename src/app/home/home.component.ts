@@ -30,7 +30,7 @@ constructor(private router: Router, private userService: UserService) { }
     this.userService.getUserInfo().subscribe((data: any) => {        
       this.userModel = data;
       // var lid = data.id;
-      // console.log("data = " + lid);
+      console.log("Home +++++++++++++++++++++++++")
     });
   }
 
@@ -43,15 +43,7 @@ constructor(private router: Router, private userService: UserService) { }
       this.router.navigate(['/wishlist/' + lid]);})
   };
   
-//Log out and remove local storage
-  Logout() {
-    localStorage.removeItem('access-token');
-    localStorage.removeItem('client');
-    localStorage.removeItem('expiry');
-    localStorage.removeItem('uid');
-    localStorage.removeItem('current_user');
-    this.router.navigate(['/login']);
-  }
+
 //show response headers : user
   showUserResponse() {
     this.userService.getUserResponse()

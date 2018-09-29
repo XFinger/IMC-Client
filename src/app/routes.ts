@@ -14,104 +14,89 @@ import { FriendListComponent } from './friend-list/friend-list.component';
 import { FriendListResolver } from './friend-list/friend-list.resolver';
 import { FriendComponent } from './friend/friend.component';
 import { FriendResolver } from './friend/friend.resolver';
-
+import { ToolbarComponent } from './user/toolbar/toolbar.component';
+import { MainComponent } from './main/main.component'
 export const appRoutes: Routes = [
-    {path: 'home', 
-     component: HomeComponent,
-     canActivate:[AuthGuard]
-    //  ,
-    //     children: [{ 
-    //     path: '',
-    //     component: NavbarComponent},
-    //     {
-    //     path: '',
-    //     component: FriendComponent,
-    //     resolve: {
-    //         friends: FriendResolver
-    //     },
-    //     outlet: "friend-list",
-    // }
-    //]
-
-    },
     
-    {path: 'navbar',
-    component: NavbarComponent,
-    canActivate:[AuthGuard],
-    outlet: "navbar"
-    // ,
-    //     children: [{ 
-    //     path: 'friends',
-    //     outlet: "frlist",
-    //     component: FriendComponent,
-    //     resolve: {
-    //         friends: FriendResolver
-    //     }}]
+    
+// Login and Register Paths    
+   {path: 'toolbar',
+    component: ToolbarComponent,
+    outlet: 'toolbar'
+},
+    {path: 'register',
+     component: RegistrationComponent
 },
 
-    {path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
-
-    {path: 'registration',
-     component: UserComponent,
-     children: [{ path: '', component: RegistrationComponent }]
-    },
-
     {path: 'login', 
-    component: UserComponent,
-    children: [{ path: '', component: SignInComponent }]
-    },
-
-    { path : '',
-    redirectTo:'/login', 
-    pathMatch : 'full'
-    },
-
-    // { path: 'wishlist', 
-    // component: WishlistComponent,
-    // canActivate:[AuthGuard]
-    // },
+    component: SignInComponent
+    // ,
+    // pathMatch : 'full'
+},
 
 
-    { path: 'wishlist/:id',
-    component: WishlistComponent,
-    resolve: {
-        wishlist: WishlistResolver
-    },
-    children: [{ path: '', component: ListitemComponent}]
-    },
+// Main - logged in path 
 
-    {
-      path: 'listitem/:id',
+    {path: '', 
+    component: MainComponent, 
+    //pathMatch: 'full',
+    children: [
+        {path: 'navbar',
+        component: NavbarComponent,
+       // outlet: "navbar"
+},
+        {path: 'home', 
+        component: HomeComponent,
+        canActivate:[AuthGuard]       
+},      
+        { path: 'wishlist/:id',
+        component: WishlistComponent,
+        resolve: {wishlist: WishlistResolver}
+        // ,
+        //     children: [{ path: '', component: ListitemComponent}]
+},
+    { path: 'listitem', 
+    component: ListitemComponent
+},
+
+    { path: 'listitem/:id',
       component: ListitemComponent
-    }, 
-    // {
-    //   path: 'listitem',
-    //   component: ListitemComponent,
-    //   resolve: {
-    //       listitem: ListitemResolver
-    //   }
-    // },   
-    // { path: '', 
-    // component: FriendComponent,canActivate:[AuthGuard],
-    //  outlet: "frlist",
-    // resolve: {
-    //     friends: FriendResolver
-    // }},
-
-    { path: 'friends', 
-    component: FriendComponent,canActivate:[AuthGuard],
-    resolve: {
-        friends: FriendResolver
-    }},  
+},
+    { path: 'friends',
+      component: FriendComponent,
+      resolve: {friends: FriendResolver }     
+},     
+    { path: '', 
+    component: FriendComponent,
+    canActivate:[AuthGuard],
+    outlet: "frlist",
+    resolve: {friends: FriendResolver }
+}, 
 
     { path: 'friendlist/:id',
     component: FriendListComponent,
-    resolve: {
-        friendlist: FriendListResolver
-    },
-    children: [{ path: '', component: ListitemComponent}]
-    }
-];
+    resolve: { friendlist: FriendListResolver},
+    children: 
+        [{ path: ' ',
+           pathMatch: 'full',
+           component: ListitemComponent}]
+}
+
+]} 
+]; 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+   
+
+
+ 
+

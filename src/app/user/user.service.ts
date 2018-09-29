@@ -12,25 +12,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
  
  //register
-  registerUser(user : UserModel){
-    const body: UserModel = {
-      username: user.username,
-      password: user.password,
-      email: user.email 
-  }    
+  registerUser(user: UserModel): Observable<UserModel>{
+   
     var reqHeader = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth':'True'});
-    console.log(body, reqHeader);
-    return this.http.post(this.rootUrl + '/auth', body,{headers : reqHeader});  
-  }
-
-  //sign-in
-  userAuthentication(email, password) {
-    const body = {
-      email: email,
-      password: password
-     };
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json',  'No-Auth':'True' });
-    return this.http.post(this.rootUrl + '/auth/sign_in', body, { headers: reqHeader, observe: 'response' });
+    console.log(user, reqHeader);
+    return this.http.post<UserModel>(this.rootUrl + '/auth', user, {headers : reqHeader});
   }
   
   //get user info
@@ -40,13 +26,6 @@ export class UserService {
       return this.http.get<UserModel>(
       this.rootUrl + '/users/' + uid, { headers: reqHeader });
   };
-
-  // public getTestInfo(): Observable<any>{
-  //   var uid = localStorage.getItem('current_user');
-  //   var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json'});
-  //     return this.http.get<any>(
-  //     this.rootUrl + '/users/' + uid, { headers: reqHeader }).map(res => res) 
-  // };
 
  //get response headers 
   getUserResponse(): Observable<HttpResponse<UserModel>> {

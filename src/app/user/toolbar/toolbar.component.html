@@ -1,0 +1,12 @@
+<mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="accent" role="toolbar">
+    <h1 class="component-title">
+      <a class="title-link" [routerLink]="['/login']">  IMCLAUS </a>
+    </h1>
+    <span class="fill-space"></span> 
+          <span class="toolbar-filler"></span>
+      <button id="button-login" mat-button [routerLink]="['/login']" >Log In</button>
+      <button id="button-register" mat-button [routerLink]="['/register']"  >Register</button>
+    
+ 
+       
+</mat-toolbar>

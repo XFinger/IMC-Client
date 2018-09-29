@@ -1,32 +1,28 @@
- 
-      <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
-        <div class="row">
-          <div class="input-field col s12">
-            <input class="validate" type="text" name="username" #username="ngModel" [(ngModel)]="userModel.username" required>
-            <label data-error="Required field!">UserName</label>
-          </div>
-        </div>
+<app-toolbar></app-toolbar>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <input class="validate" type="text" name="email" #email="ngModel" [(ngModel)]="userModel.email" [pattern]="emailPattern">
-            <label data-error="Invalid email!">Email</label>
-          </div>
-        </div>
+<mat-card class = "small-card">
+  <mat-card-title>Register</mat-card-title>
+  <form [formGroup]="userRegistrationForm" (ngSubmit)= "onSubmit(user)">
+    <mat-form-field appearance="outline">
+      <mat-label> User Name </mat-label>
+      <input matInput formControlName="username" required>
+    </mat-form-field><br> 
+    <mat-form-field appearance="outline">
+      <mat-label> Email </mat-label>
+        <input matInput formControlName="email" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label> Password </mat-label>
+          <input matInput formControlName="password"  [type]="hide ? 'password' : 'text'" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label> Confirm Password </mat-label>
+          <input matInput formControlName="password_confirmation" required>
+          <mat-hint class = 'smaller'>*Required</mat-hint>
+      </mat-form-field> 
+      <mat-card-actions>
+          <button mat-button type="onSubmit" class="btn btn-primary-outline">Register</button>
+      </mat-card-actions>
 
-        <div class = "row">
-          <div class="input-field col s12">
-            <input class="validate" type="password" name="password" #password="ngModel" [(ngModel)]="userModel.password" required  minlength="3">
-            <label [attr.data-error]="password.errors!=null?(password.errors.required?'Required field!':'Minimum 6 characters needed'):''">Password</label>
-          </div>
-        </div>
-         
-
-        
-        <div class="row">
-            <div class="input-field col s12">
-              <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
-            </div>
-          </div>
-      </form>
- 
+  </form>    
+</mat-card>
